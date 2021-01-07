@@ -8,15 +8,18 @@ export default class ChatFeed extends Component {
     renderMessages() {
         return _.map(this.props.messages, (message, index) => {
             return (
-                <div 
-                    key={`msg_${index}`}
-                    style={{
-                        backgroundColor: 'white',
-                        padding: '12px',
-                        fontSize: '16px'
-                    }}
-                >
-                    {message.text}
+                <div>
+                    <div 
+                        key={`msg_${index}`}
+                        style={{
+                            padding: '12px',
+                            fontSize: '16px',
+                            display: 'inline-block',
+                            backgroundColor: 'white',
+                        }}
+                    >
+                        { message.text }
+                    </div>
                 </div>
             )
         })
@@ -32,7 +35,8 @@ export default class ChatFeed extends Component {
             <div style={{ 
                 height: '100%',
                 width: '100%', 
-                backgroundImage: 'url(https://chat-engine-assets.s3.amazonaws.com/chat-feed-min.png)', 
+                backgroundColor: '#722ed1',
+                // backgroundImage: 'url(https://chat-engine-assets.s3.amazonaws.com/chat-feed-min.png)', 
             }}>
 
                 {/* Chat Title Section */}
@@ -48,11 +52,14 @@ export default class ChatFeed extends Component {
 
                 </div>
 
-                {/* List out Chat Messages */}
-                <div style={{ width: '100%' }}>
+                {/* Chat Messages */}
+                <div>
+
                     { this.renderMessages() }
+
                 </div>
 
+                {/* Message Form */}
                 <div style={{ position: 'absolute', bottom: '0px', width: '100%', padding: '18px' }}>
 
                     <MessageForm {...this.props} chatId={this.props.activeChat} />
