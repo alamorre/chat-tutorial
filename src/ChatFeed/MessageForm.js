@@ -37,12 +37,11 @@ export default class MessageForm extends React.Component {
                 <input 
                     style={{ 
                         height: '40px',
-                        width: 'calc(100% - 146px)',
+                        width: 'calc(100% - 110px)',
                         backgroundColor: 'white',
                         border: '1px solid white',
-                        borderRadius: '6px',
+                        borderRadius: '6px 0px 0px 6px',
                         padding: '0px 18px',
-                        marginRight: '18px',
                         outline: 'none',
                     }}
                     placeholder='Send a message...' 
@@ -57,7 +56,7 @@ export default class MessageForm extends React.Component {
                         height: '42px',
                         backgroundColor: 'white',
                         border: '1px solid white',
-                        borderRadius: '6px',
+                        borderRadius: '0px 6px 6px 0px',
                         padding: '0px 18px',
                         cursor: 'pointer',
                     }}

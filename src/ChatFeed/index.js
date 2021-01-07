@@ -19,6 +19,7 @@ export default class ChatFeed extends Component {
                         }}
                     >
                         { message.text }
+                        {'...'}
                     </div>
                 </div>
             )
@@ -35,12 +36,12 @@ export default class ChatFeed extends Component {
             <div style={{ 
                 height: '100%',
                 width: '100%', 
-                backgroundColor: '#722ed1',
+                backgroundColor: '#7554A0', // F4F1F8, DFD6EA, CABCDC, B5A1CE, A087C0, 8A6CB2, 7554A0, 624686, 4E386B, 3B2A50
                 // backgroundImage: 'url(https://chat-engine-assets.s3.amazonaws.com/chat-feed-min.png)', 
             }}>
 
                 {/* Chat Title Section */}
-                <div style={{ width: '100%', textAlign: 'center', padding: '18px' }}>
+                <div style={{ width: 'calc(100% - 36px)', padding: '18px' , textAlign: 'center'}}>
                 
                     <div style={{ color: 'white', fontWeight: '800', fontSize: '24px' }}>
                         { chat.title }
@@ -60,7 +61,15 @@ export default class ChatFeed extends Component {
                 </div>
 
                 {/* Message Form */}
-                <div style={{ position: 'absolute', bottom: '0px', width: '100%', padding: '18px' }}>
+                <div 
+                    style={{ 
+                        position: 'absolute', 
+                        bottom: '0px', 
+                        width: 'calc(100% - 36px)', 
+                        padding: '18px', 
+                        backgroundColor: '#7554A0' 
+                    }}
+                >
 
                     <MessageForm {...this.props} chatId={this.props.activeChat} />
 
