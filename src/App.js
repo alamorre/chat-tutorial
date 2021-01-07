@@ -32,7 +32,7 @@ function App() {
       projectID='52147d0e-0f43-4ea7-916f-1820a16bf1d7'
       userName={user.userName}
       userSecret={user.userSecret}
-      renderChatFeed={(props, state) => console.log(props, state)}
+      renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
     />
   );
 }
