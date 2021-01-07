@@ -6,26 +6,26 @@ import ChatFeed from './ChatFeed'
 
 const users = [
   {
-    userName: 'Dice',
+    userName: 'Alice',
     userSecret: 'pass1234',
   },
   {
-    userName: 'Domino',
+    userName: 'Bob',
     userSecret: 'pass1234',
   },
   {
-    userName: 'Key',
+    userName: 'Wendy',
     userSecret: 'pass1234',
   },
   {
-    userName: 'Pencil',
+    userName: 'Zack',
     userSecret: 'pass1234',
   }
 ]
 
 function App() {
   const user = users[Math.floor(Math.random() * users.length)]
-
+  
   return (
     <ChatEngine 
       height='100vh'
