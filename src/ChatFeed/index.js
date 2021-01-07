@@ -9,18 +9,21 @@ export default class ChatFeed extends Component {
         return _.map(this.props.messages, (message, index) => {
             return (
                 <div>
-                    <div 
-                        key={`msg_${index}`}
-                        style={{
-                            padding: '12px',
-                            fontSize: '16px',
-                            display: 'inline-block',
-                            backgroundColor: 'white',
-                        }}
-                    >
-                        { message.text }
-                        {'...'}
-                    </div>
+                    {
+                        this.props.userName === message.sender.username ?
+                        <MyMessage key={`msg_${index}`} message={message} /> :
+                        <div 
+                            key={`msg_${index}`}
+                            style={{
+                                padding: '12px',
+                                fontSize: '16px',
+                                display: 'inline-block',
+                                backgroundColor: 'white',
+                            }}
+                        >
+                            { message.text }
+                        </div>
+                    }
                 </div>
             )
         })
