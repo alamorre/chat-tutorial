@@ -4,34 +4,16 @@ import { ChatEngine } from 'react-chat-engine'
 
 import ChatFeed from './ChatFeed'
 
-const users = [
-  {
-    userName: 'Alice',
-    userSecret: 'pass1234',
-  },
-  {
-    userName: 'Bob',
-    userSecret: 'pass1234',
-  },
-  {
-    userName: 'Wendy',
-    userSecret: 'pass1234',
-  },
-  {
-    userName: 'Zack',
-    userSecret: 'pass1234',
-  }
-]
+const userNames = ['Alice', 'Bob', 'Wendy', 'Zack']
+const userName = userNames[Math.floor(Math.random() * userNames.length)]
 
 function App() {
-  const user = users[Math.floor(Math.random() * users.length)]
-  
   return (
     <ChatEngine 
       height='100vh'
       projectID='52147d0e-0f43-4ea7-916f-1820a16bf1d7'
-      userName={user.userName}
-      userSecret={user.userSecret}
+      userName={userName}
+      userSecret='pass1234'
       renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
     />
   );
