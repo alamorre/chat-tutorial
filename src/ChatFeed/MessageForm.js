@@ -37,7 +37,7 @@ export default class MessageForm extends React.Component {
                 <input 
                     style={{ 
                         height: '40px',
-                        width: 'calc(100% - 110px)',
+                        width: 'calc(100% - 90px)',
                         backgroundColor: 'white',
                         border: '1px solid white',
                         borderRadius: '6px 0px 0px 6px',
