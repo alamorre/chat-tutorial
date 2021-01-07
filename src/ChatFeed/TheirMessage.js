@@ -3,13 +3,14 @@ import React, { Component } from 'react'
 export default class TheirMessage extends Component {
     render() {
         const { lastMessage, message, nextMessage } = this.props
+        const isFirstMessageByUser = lastMessage && lastMessage.sender.username !== message.sender.username
         const isLastMessageByUser = nextMessage && nextMessage.sender.username !== message.sender.username
 
         return (
             <div style={{ display: 'flex', marginLeft: '18px', marginBottom: isLastMessageByUser ? '12px' : '0px' }}>
 
                 {
-                    lastMessage && lastMessage.sender.username !== message.sender.username &&
+                    isFirstMessageByUser &&
                     <div 
                         style={{
                             width: '44px',
@@ -28,7 +29,7 @@ export default class TheirMessage extends Component {
                 <div 
                     style={{
                         float: 'left',
-                        marginLeft: '4px',
+                        marginLeft: isFirstMessageByUser ? '4px' : '48px',
                         padding: '12px',
                         fontSize: '16px',
                         backgroundColor: '#CABCDC',
