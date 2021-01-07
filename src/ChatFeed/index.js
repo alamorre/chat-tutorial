@@ -1,20 +1,33 @@
 import React, { Component } from 'react'
 
-import _ from 'lodash'
 
 import MyMessage from './MyMessage'
 import TheirMessage from './TheirMessage'
 import MessageForm from './MessageForm'
 
 export default class ChatFeed extends Component {
-    renderMessages() {
-        return _.map(this.props.messages, (message, index) => {
+    renderMessages(messages) {
+        const keys = Object.keys(messages)
+
+        return keys.map((key, index) => {
+            const message = messages[key]
+            const lastMessageKey = index === 0 ? null : keys[index - 1]
+            const nextMessageKey = index === keys.length - 1 ? null : keys[index + 1]
+
             return (
                 <div key={`msg_${index}`} style={{ width: '100%', display: 'inline-block', }}>
                     {
                         this.props.userName === message.sender.username ?
-                        <MyMessage message={message} /> :
-                        <TheirMessage message={message} />
+                        <MyMessage 
+                            lastMessage={messages[lastMessageKey]} 
+                            message={message} 
+                            nextMessage={messages[nextMessageKey]} 
+                        /> :
+                        <TheirMessage 
+                            lastMessage={messages[lastMessageKey]} 
+                            message={message} 
+                            nextMessage={messages[nextMessageKey]} 
+                        />
                     }
                 </div>
             )
@@ -31,18 +44,18 @@ export default class ChatFeed extends Component {
             <div style={{ 
                 height: '100%',
                 width: '100%', 
-                backgroundColor: '#7554A0', // F4F1F8, DFD6EA, CABCDC, B5A1CE, A087C0, 8A6CB2, 7554A0, 624686, 4E386B, 3B2A50
+                backgroundColor: 'rgb(240, 240, 240)', //'#7554A0', // F4F1F8, DFD6EA, CABCDC, B5A1CE, A087C0, 8A6CB2, 7554A0, 624686, 4E386B, 3B2A50
                 // backgroundImage: 'url(https://chat-engine-assets.s3.amazonaws.com/chat-feed-min.png)', 
             }}>
 
                 {/* Chat Title Section */}
                 <div style={{ width: 'calc(100% - 36px)', padding: '18px' , textAlign: 'center'}}>
                 
-                    <div style={{ color: 'white', fontWeight: '800', fontSize: '24px' }}>
+                    <div style={{ color: '#7554A0', fontWeight: '800', fontSize: '24px' }}>
                         { chat.title }
                     </div>
 
-                    <div style={{ color: '#f0f0f0', fontWeight: '600', fontSize: '12px', paddingTop: '4px' }}>
+                    <div style={{ color: '#7554A0', fontWeight: '600', fontSize: '12px', paddingTop: '4px' }}>
                         { chat.people.map(person => ' ' + person.person.username) }
                     </div>
 
@@ -51,7 +64,7 @@ export default class ChatFeed extends Component {
                 {/* Chat Messages */}
                 <div>
 
-                    { this.renderMessages() }
+                    { this.renderMessages(this.props.messages) }
 
                 </div>
 
@@ -62,7 +75,7 @@ export default class ChatFeed extends Component {
                         bottom: '0px', 
                         width: 'calc(100% - 36px)', 
                         padding: '18px', 
-                        backgroundColor: '#7554A0' 
+                        backgroundColor: 'rgb(240, 240, 240)', //'#7554A0' 
                     }}
                 >
 

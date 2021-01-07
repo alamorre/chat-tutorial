@@ -32,7 +32,14 @@ export default class MessageForm extends React.Component {
   
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
+            <form 
+                onSubmit={this.handleSubmit.bind(this)} 
+                style={{ 
+                    overflow: 'hidden',
+                    borderRadius: '6px',
+                    border: '1px solid #3B2A50',
+                }}
+            >
 
                 <input 
                     style={{ 
@@ -40,7 +47,6 @@ export default class MessageForm extends React.Component {
                         width: 'calc(100% - 90px)',
                         backgroundColor: 'white',
                         border: '1px solid white',
-                        borderRadius: '6px 0px 0px 6px',
                         padding: '0px 18px',
                         outline: 'none',
                     }}
@@ -56,7 +62,6 @@ export default class MessageForm extends React.Component {
                         height: '42px',
                         backgroundColor: 'white',
                         border: '1px solid white',
-                        borderRadius: '0px 6px 6px 0px',
                         padding: '0px 18px',
                         cursor: 'pointer',
                     }}
@@ -64,9 +69,10 @@ export default class MessageForm extends React.Component {
 
                     <SendOutlined 
                         style={{ 
-                            top: '1px', 
-                            position: 'relative', 
-                            transform: 'rotate(-90deg)' 
+                            top: '1px',
+                            color: '#3B2A50',
+                            position: 'relative',
+                            transform: 'rotate(-90deg)',
                         }}
                     />
 
