@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class MyMessage extends Component {
     render() {
-        const { message } = this.props
+        const { lastMessage, message } = this.props
 
         return (
             <div 
