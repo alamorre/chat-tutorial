@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 
 export default class MyMessage extends Component {
     render() {
-        const { lastMessage, message } = this.props
-
         return (
             <div 
                 style={{
@@ -16,7 +14,7 @@ export default class MyMessage extends Component {
                     borderRadius: '6px',
                 }}
             >
-                { message.text }
+                { this.props.message.text }
             </div>
         );
     }
