@@ -12,6 +12,7 @@ export default class MyMessage extends Component {
                     color: 'white',
                     backgroundColor: '#3B2A50',
                     borderRadius: '6px',
+                    maxWidth: '60%',
                 }}
             >
                 { this.props.message.text }

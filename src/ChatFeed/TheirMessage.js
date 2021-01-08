@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class TheirMessage extends Component {
     render() {
-        const { lastMessage, message, nextMessage } = this.props
+        const { lastMessage, message } = this.props
         const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username
 
         return (
@@ -20,7 +20,7 @@ export default class TheirMessage extends Component {
                             backgroundImage: message.sender && `url(${message.sender.avatar})`,
                             backgroundRepeat: 'no-repeat',
                             backgroundPosition: 'center',
-                            backgroundSize: '48px'
+                            backgroundSize: '48px',
                         }} 
                     />
                 }
@@ -33,6 +33,7 @@ export default class TheirMessage extends Component {
                         fontSize: '16px',
                         backgroundColor: '#CABCDC',
                         borderRadius: '6px',
+                        maxWidth: '60%',
                     }}
                 >
                     { message.text }

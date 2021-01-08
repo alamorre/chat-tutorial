@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 import MyMessage from './MyMessage'
 import TheirMessage from './TheirMessage'
 import MessageForm from './MessageForm'
@@ -18,7 +17,7 @@ export default class ChatFeed extends Component {
                     width: '13px',
                     height: '13px',
                     borderRadius: '13px',
-                    margin: '0px 1.5px',
+                    margin: '1.5px',
                     backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
@@ -42,18 +41,10 @@ export default class ChatFeed extends Component {
                     {
                         isMyMessage ?
                         <MyMessage message={message} /> :
-                        <TheirMessage 
-                            lastMessage={messages[lastMessageKey]} 
-                            message={message} 
-                        />
+                        <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
                     }
                     
-                    <div 
-                        style={{ 
-                            width: '100%',
-                            display: 'flex',
-                        }}
-                    >
+                    <div>
                         { this.renderReadReceipts(message) }
                     </div>
 
@@ -72,6 +63,7 @@ export default class ChatFeed extends Component {
             <div style={{ 
                 height: '100%',
                 width: '100%', 
+                overflow: 'scroll',
                 backgroundColor: 'rgb(240, 240, 240)', //'#7554A0', // F4F1F8, DFD6EA, CABCDC, B5A1CE, A087C0, 8A6CB2, 7554A0, 624686, 4E386B, 3B2A50
             }}>
 
@@ -87,11 +79,13 @@ export default class ChatFeed extends Component {
 
                 </div>
 
-                <div>
+                <div style={{ width: '100%' }}>
 
                     { this.renderMessages(this.props.messages) }
 
                 </div>
+
+                <div style={{ height: '100px' }} />
 
                 <div 
                     style={{ 
