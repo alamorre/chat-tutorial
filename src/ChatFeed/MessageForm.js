@@ -1,13 +1,11 @@
 import React from 'react';
 
+import { SendOutlined, PictureOutlined } from '@ant-design/icons'
+
 import { sendMessage, isTyping } from 'react-chat-engine'
 
-import { SendOutlined } from '@ant-design/icons'
-
 export default class MessageForm extends React.Component {
-    state = {
-        value: '',
-    }
+    state = { value: '' }
   
     handleChange(event) {
         this.setState({value: event.target.value});
@@ -16,18 +14,23 @@ export default class MessageForm extends React.Component {
   
     handleSubmit(event) {
         event.preventDefault();
-
         const text = this.state.value.trim()
         if (text.length > 0 ) {
             sendMessage(
                 this.props.creds, 
                 this.props.chatId, 
-                { text },
-                () => {}
+                { text }
             )
         }
-
         this.setState({ value: '' })
+    }
+
+    handleNewImage(event) {
+        sendMessage(
+            this.props.creds, 
+            this.props.chatId, 
+            { files: event.target.files }
+        )
     }
   
     render() {
@@ -38,13 +41,14 @@ export default class MessageForm extends React.Component {
                     overflow: 'hidden',
                     borderRadius: '6px',
                     border: '1px solid #3B2A50',
+                    backgroundColor: 'white',
                 }}
             >
 
                 <input 
                     style={{ 
                         height: '40px',
-                        width: 'calc(100% - 90px)',
+                        width: 'calc(100% - 132px)',
                         backgroundColor: 'white',
                         border: '1px solid white',
                         padding: '0px 18px',
@@ -54,6 +58,20 @@ export default class MessageForm extends React.Component {
                     value={this.state.value} 
                     onChange={this.handleChange.bind(this)} 
                     onSubmit={this.handleSubmit.bind(this)} 
+                />
+
+                <label htmlFor="upload-button">
+                    <span style={{ cursor: 'pointer', padding: '0px 12px', height: '100%' }}>
+                        <PictureOutlined style={{ top: '1px', position: 'relative' }} />
+                    </span>
+                </label>
+
+                <input
+                    type="file"
+                    multiple={false}
+                    id="upload-button"
+                    style={{ display: "none" }}
+                    onChange={this.handleNewImage.bind(this)}
                 />
                 
                 <button 
@@ -67,18 +85,11 @@ export default class MessageForm extends React.Component {
                     }}
                 >
 
-                    <SendOutlined 
-                        style={{ 
-                            top: '1px',
-                            color: '#3B2A50',
-                            position: 'relative',
-                            transform: 'rotate(-90deg)',
-                        }}
-                    />
+                    <SendOutlined style={{ top: '1px', position: 'relative', transform: 'rotate(-90deg)' }} />
 
                 </button>
                 
             </form>
-        );
+        )
     }
 }
