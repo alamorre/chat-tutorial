@@ -20,7 +20,7 @@ export default class MyMessage extends Component {
                         minWidth: '100px', 
                     }}
                     src={message.attachments[0].file}
-                    alt={'image'}
+                    alt='my-msg-img'
                 />
             )
         }
