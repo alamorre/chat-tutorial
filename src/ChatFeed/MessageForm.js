@@ -25,7 +25,7 @@ export default class MessageForm extends React.Component {
         this.setState({ value: '' })
     }
 
-    handleNewImage(event) {
+    handleUpload(event) {
         sendMessage(
             this.props.creds, 
             this.props.chatId, 
@@ -53,7 +53,7 @@ export default class MessageForm extends React.Component {
                         border: '1px solid white',
                         padding: '0px 18px',
                         outline: 'none',
-                        fontSize: '12px',
+                        fontSize: '15px',
                     }}
                     placeholder='Send a message...' 
                     value={this.state.value} 
@@ -72,7 +72,7 @@ export default class MessageForm extends React.Component {
                     multiple={false}
                     id="upload-button"
                     style={{ display: "none" }}
-                    onChange={this.handleNewImage.bind(this)}
+                    onChange={this.handleUpload.bind(this)}
                 />
                 
                 <button 

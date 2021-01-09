@@ -78,7 +78,7 @@ export default class ChatFeed extends Component {
                 height: '100%',
                 width: '100%', 
                 overflow: 'scroll',
-                backgroundColor: 'rgb(240, 240, 240)', //'#7554A0', // F4F1F8, DFD6EA, CABCDC, B5A1CE, A087C0, 8A6CB2, 7554A0, 624686, 4E386B, 3B2A50
+                backgroundColor: 'rgb(240, 240, 240)',
             }}>
 
                 <div style={{ width: 'calc(100% - 36px)', padding: '18px' , textAlign: 'center'}}>

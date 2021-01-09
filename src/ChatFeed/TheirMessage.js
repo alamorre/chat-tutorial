@@ -25,19 +25,37 @@ export default class TheirMessage extends Component {
                     />
                 }
 
-                <div 
-                    style={{
-                        float: 'left',
-                        marginLeft: isFirstMessageByUser ? '4px' : '48px',
-                        padding: '12px',
-                        fontSize: '16px',
-                        backgroundColor: '#CABCDC',
-                        borderRadius: '6px',
-                        maxWidth: '60%',
-                    }}
-                >
-                    { message.text }
-                </div>
+                {
+                    message.attachments && message.attachments.length > 0 ?
+                    <img
+                        src={message.attachments[0].file}
+                        alt='message-pic'
+                        style={{
+                            marginLeft: isFirstMessageByUser ? '4px' : '48px',
+                            objectFit: 'cover',
+                            borderRadius: '6px',
+                            height: '30vw', 
+                            width: '30vw', 
+                            maxHeight: '200px',
+                            maxWidth: '200px',
+                            minHeight: '100px',
+                            minWidth: '100px', 
+                        }}
+                    /> :
+                    <div 
+                        style={{
+                            float: 'left',
+                            marginLeft: isFirstMessageByUser ? '4px' : '48px',
+                            padding: '12px',
+                            fontSize: '16px',
+                            backgroundColor: '#CABCDC',
+                            borderRadius: '6px',
+                            maxWidth: '60%',
+                        }}
+                    >
+                        { message.text }
+                    </div>
+                }
 
             </div>
         );
