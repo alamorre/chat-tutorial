@@ -53,6 +53,7 @@ export default class MessageForm extends React.Component {
                         border: '1px solid white',
                         padding: '0px 18px',
                         outline: 'none',
+                        fontSize: '12px',
                     }}
                     placeholder='Send a message...' 
                     value={this.state.value} 
@@ -62,7 +63,7 @@ export default class MessageForm extends React.Component {
 
                 <label htmlFor="upload-button">
                     <span style={{ cursor: 'pointer', padding: '0px 12px', height: '100%' }}>
-                        <PictureOutlined style={{ top: '1px', position: 'relative' }} />
+                        <PictureOutlined style={{ top: '1px', position: 'relative', fontSize: '14px' }} />
                     </span>
                 </label>
 
