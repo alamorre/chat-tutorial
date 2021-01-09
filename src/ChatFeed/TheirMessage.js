@@ -6,7 +6,7 @@ export default class TheirMessage extends Component {
         const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username
 
         return (
-            <div style={{ float: 'left', display: 'flex', marginLeft: '18px' }}>
+            <div style={{ float: 'left', width: '100%', display: 'flex', marginLeft: '18px' }}>
 
                 {
                     isFirstMessageByUser &&

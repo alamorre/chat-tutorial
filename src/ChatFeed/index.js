@@ -5,7 +5,7 @@ import TheirMessage from './TheirMessage'
 import MessageForm from './MessageForm'
 
 export default class ChatFeed extends Component {
-    renderReadReceipts(message) {
+    renderReadReceipts(message, isMyMessage) {
         const { chats, activeChat } = this.props 
         const chat = chats && chats[activeChat]
 
@@ -22,6 +22,7 @@ export default class ChatFeed extends Component {
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
                     backgroundSize: '14px',
+                    float: isMyMessage ? 'right' : 'left',
                 }}
             />
         })
@@ -36,16 +37,29 @@ export default class ChatFeed extends Component {
             const isMyMessage = this.props.userName === message.sender.username
 
             return (
-                <div key={`msg_${index}`} style={{ width: '100%', display: 'inline-block' }}>
+                <div key={`msg_${index}`} style={{ width: '100%' }}>
                     
-                    {
-                        isMyMessage ?
-                        <MyMessage message={message} /> :
-                        <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
-                    }
+                    <div style={{ width: '100%', display: 'inline-block' }}>
                     
-                    <div>
-                        { this.renderReadReceipts(message) }
+                        {
+                            isMyMessage ?
+                            <MyMessage message={message} /> :
+                            <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
+                        }
+
+                    </div>
+                    
+                    <div
+                        style={{ 
+                            position: 'relative',
+                            bottom: '6px',
+                            marginRight: isMyMessage ? '18px' : '0px',
+                            marginLeft: isMyMessage ? '0px' : '68px',
+                    }}
+                    >
+
+                        { this.renderReadReceipts(message, isMyMessage) }
+
                     </div>
 
                 </div>
