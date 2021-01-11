@@ -108,10 +108,28 @@
   font-size: 15px;
 }
 
+.image-button {
+  cursor: pointer;
+  padding: 0px 12px;
+  height: 100%;
+}
+
 .send-button {
   height: 42px;
   background-color: white;
   border: 1px solid white;
   padding: 0px 18px;
   cursor: pointer;
+}
+
+.send-icon {
+  top: 1px;
+  position: relative;
+  transform: rotate(-90deg);
+}
+
+.picture-icon {
+  top: 1px;
+  position: relative;
+  font-size: 14px;
 }

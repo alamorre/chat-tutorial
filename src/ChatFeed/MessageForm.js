@@ -8,7 +8,7 @@ export default class MessageForm extends React.Component {
     state = { value: '' }
   
     handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({ value: event.target.value });
         isTyping(this.props, this.props.chatId)
     }
   
@@ -45,8 +45,8 @@ export default class MessageForm extends React.Component {
                 />
 
                 <label htmlFor="upload-button">
-                    <span style={{ cursor: 'pointer', padding: '0px 12px', height: '100%' }}>
-                        <PictureOutlined style={{ top: '1px', position: 'relative', fontSize: '14px' }} />
+                    <span className='image-button'>
+                        <PictureOutlined className='picture-icon' />
                     </span>
                 </label>
 
@@ -59,7 +59,7 @@ export default class MessageForm extends React.Component {
                 />
                 
                 <button type="submit" className='send-button'>
-                    <SendOutlined style={{ top: '1px', position: 'relative', transform: 'rotate(-90deg)' }} />
+                    <SendOutlined className='send-icon' />
                 </button>
             </form>
         )

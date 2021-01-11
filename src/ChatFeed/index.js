@@ -6,8 +6,7 @@ import MessageForm from './MessageForm'
 
 export default class ChatFeed extends Component {
     renderReadReceipts(message, isMyMessage) {
-        const { chats, activeChat } = this.props 
-        const chat = chats && chats[activeChat]
+        const chat = this.props.chats && this.props.chats[this.props.activeChat]
 
         return chat.people.map((person, index) => {
             return person.last_read === message.id &&
@@ -55,17 +54,14 @@ export default class ChatFeed extends Component {
     }
 
     render() {
-        const { chats, activeChat } = this.props 
-        const chat = chats && chats[activeChat]
+        const chat = this.props.chats && this.props.chats[this.props.activeChat]
 
         if (!chat) return <div />
 
         return (
             <div className='chat-feed'>
                 <div className='chat-title-container'>
-                    <div className='chat-title'>
-                        { chat.title }
-                    </div>
+                    <div className='chat-title'>{ chat.title }</div>
 
                     <div className='chat-subtitle'>
                         { chat.people.map(person => ' ' + person.person.username) }
