@@ -6,22 +6,12 @@ export default class TheirMessage extends Component {
         const isFirstMessageByUser = !lastMessage || lastMessage.sender.username !== message.sender.username
 
         return (
-            <div style={{ float: 'left', width: '100%', display: 'flex', marginLeft: '18px' }}>
-
+            <div className='message-row'>
                 {
                     isFirstMessageByUser &&
                     <div 
-                        style={{
-                            width: '44px',
-                            height: '44px',
-                            borderRadius: '22px',
-                            color: 'white',
-                            textAlign: 'center',
-                            backgroundImage: message.sender && `url(${message.sender.avatar})`,
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: 'center',
-                            backgroundSize: '48px',
-                        }} 
+                        className='message-avatar'
+                        style={{ backgroundImage: message.sender && `url(${message.sender.avatar})`}} 
                     />
                 }
 
@@ -30,33 +20,20 @@ export default class TheirMessage extends Component {
                     <img
                         src={message.attachments[0].file}
                         alt='message-pic'
-                        style={{
-                            marginLeft: isFirstMessageByUser ? '4px' : '48px',
-                            objectFit: 'cover',
-                            borderRadius: '6px',
-                            height: '30vw', 
-                            width: '30vw', 
-                            maxHeight: '200px',
-                            maxWidth: '200px',
-                            minHeight: '100px',
-                            minWidth: '100px', 
-                        }}
+                        className='message-image'
+                        style={{ marginLeft: isFirstMessageByUser ? '4px' : '48px' }}
                     /> :
                     <div 
+                        className='message'
                         style={{
                             float: 'left',
-                            marginLeft: isFirstMessageByUser ? '4px' : '48px',
-                            padding: '12px',
-                            fontSize: '16px',
                             backgroundColor: '#CABCDC',
-                            borderRadius: '6px',
-                            maxWidth: '60%',
+                            marginLeft: isFirstMessageByUser ? '4px' : '48px',
                         }}
                     >
                         { message.text }
                     </div>
                 }
-
             </div>
         );
     }
