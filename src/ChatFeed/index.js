@@ -63,18 +63,16 @@ export default class ChatFeed extends Component {
         return (
             <div className='chat-feed'>
                 <div className='chat-title-container'>
-                    <div style={{ color: '#7554A0', fontWeight: '800', fontSize: '24px' }}>
+                    <div className='chat-title'>
                         { chat.title }
                     </div>
 
-                    <div style={{ color: '#7554A0', fontWeight: '600', fontSize: '12px', paddingTop: '4px' }}>
+                    <div className='chat-subtitle'>
                         { chat.people.map(person => ' ' + person.person.username) }
                     </div>
                 </div>
 
-                <div style={{ width: '100%' }}>
-                    { this.renderMessages(this.props.messages) }
-                </div>
+                { this.renderMessages(this.props.messages) }
 
                 <div style={{ height: '100px' }} />
 
