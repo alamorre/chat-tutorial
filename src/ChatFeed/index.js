@@ -12,17 +12,11 @@ export default class ChatFeed extends Component {
         return chat.people.map((person, index) => {
             return person.last_read === message.id &&
             <div 
-                key={`read_${index}`} 
+                key={`read_${index}`}
+                className='read-receipt'
                 style={{ 
-                    width: '13px',
-                    height: '13px',
-                    borderRadius: '13px',
-                    margin: '1.5px',
-                    backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center',
-                    backgroundSize: '14px',
                     float: isMyMessage ? 'right' : 'left',
+                    backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
                 }}
             />
         })
@@ -38,30 +32,23 @@ export default class ChatFeed extends Component {
 
             return (
                 <div key={`msg_${index}`} style={{ width: '100%' }}>
-                    
                     <div style={{ width: '100%', display: 'inline-block' }}>
-                    
                         {
                             isMyMessage ?
                             <MyMessage message={message} /> :
                             <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />
                         }
-
                     </div>
                     
                     <div
+                        className='read-receipts'
                         style={{ 
-                            position: 'relative',
-                            bottom: '6px',
                             marginRight: isMyMessage ? '18px' : '0px',
                             marginLeft: isMyMessage ? '0px' : '68px',
-                    }}
+                        }}
                     >
-
                         { this.renderReadReceipts(message, isMyMessage) }
-
                     </div>
-
                 </div>
             )
         })
@@ -74,15 +61,8 @@ export default class ChatFeed extends Component {
         if (!chat) return <div />
 
         return (
-            <div style={{ 
-                height: '100%',
-                width: '100%', 
-                overflow: 'scroll',
-                backgroundColor: 'rgb(240, 240, 240)',
-            }}>
-
-                <div style={{ width: 'calc(100% - 36px)', padding: '18px' , textAlign: 'center'}}>
-                
+            <div className='chat-feed'>
+                <div className='chat-title-container'>
                     <div style={{ color: '#7554A0', fontWeight: '800', fontSize: '24px' }}>
                         { chat.title }
                     </div>
@@ -90,31 +70,17 @@ export default class ChatFeed extends Component {
                     <div style={{ color: '#7554A0', fontWeight: '600', fontSize: '12px', paddingTop: '4px' }}>
                         { chat.people.map(person => ' ' + person.person.username) }
                     </div>
-
                 </div>
 
                 <div style={{ width: '100%' }}>
-
                     { this.renderMessages(this.props.messages) }
-
                 </div>
 
                 <div style={{ height: '100px' }} />
 
-                <div 
-                    style={{ 
-                        position: 'absolute', 
-                        bottom: '0px', 
-                        width: 'calc(100% - 36px)', 
-                        padding: '18px', 
-                        backgroundColor: 'rgb(240, 240, 240)', //'#7554A0' 
-                    }}
-                >
-
+                <div className='message-form-container'>
                     <MessageForm {...this.props} chatId={this.props.activeChat} />
-
                 </div>
-
             </div>
         );
     }

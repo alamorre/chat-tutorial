@@ -35,26 +35,9 @@ export default class MessageForm extends React.Component {
   
     render() {
         return (
-            <form 
-                onSubmit={this.handleSubmit.bind(this)} 
-                style={{ 
-                    overflow: 'hidden',
-                    borderRadius: '6px',
-                    border: '1px solid #3B2A50',
-                    backgroundColor: 'white',
-                }}
-            >
-
+            <form className='message-form' onSubmit={this.handleSubmit.bind(this)} >
                 <input 
-                    style={{ 
-                        height: '40px',
-                        width: 'calc(100% - 132px)',
-                        backgroundColor: 'white',
-                        border: '1px solid white',
-                        padding: '0px 18px',
-                        outline: 'none',
-                        fontSize: '15px',
-                    }}
+                    className='message-input'
                     placeholder='Send a message...' 
                     value={this.state.value} 
                     onChange={this.handleChange.bind(this)} 
@@ -75,21 +58,9 @@ export default class MessageForm extends React.Component {
                     onChange={this.handleUpload.bind(this)}
                 />
                 
-                <button 
-                    type="submit"
-                    style={{
-                        height: '42px',
-                        backgroundColor: 'white',
-                        border: '1px solid white',
-                        padding: '0px 18px',
-                        cursor: 'pointer',
-                    }}
-                >
-
+                <button type="submit" className='send-button'>
                     <SendOutlined style={{ top: '1px', position: 'relative', transform: 'rotate(-90deg)' }} />
-
                 </button>
-                
             </form>
         )
     }
