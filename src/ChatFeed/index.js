@@ -31,7 +31,7 @@ export default class ChatFeed extends Component {
 
             return (
                 <div key={`msg_${index}`} style={{ width: '100%' }}>
-                    <div style={{ width: '100%', display: 'inline-block' }}>
+                    <div className='message-block'>
                         {
                             isMyMessage ?
                             <MyMessage message={message} /> :
