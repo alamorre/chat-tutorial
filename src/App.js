@@ -8,6 +8,7 @@ const userNames = ['Alice', 'Bob', 'Wendy', 'Zack']
 const userName = userNames[Math.floor(Math.random() * userNames.length)]
 
 function App() {
+  console.log(userName)
   return (
     <ChatEngine 
       height='100vh'
@@ -15,6 +16,7 @@ function App() {
       userName={userName}
       userSecret='pass1234'
       renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
+      onNewMessage={() => new Audio('https://chat-engine-assets.s3.amazonaws.com/click.mp3').play()}
     />
   );
 }
