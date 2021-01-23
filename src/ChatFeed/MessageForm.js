@@ -29,7 +29,7 @@ export default class MessageForm extends React.Component {
         sendMessage(
             this.props.creds, 
             this.props.chatId, 
-            { files: event.target.files }
+            { files: event.target.files, text: '' }
         )
     }
   
